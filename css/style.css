@@ -98,9 +98,11 @@
   font-size: 32px;
 }
 
+
 .circle-bmitag{
   fill: transparent;
 }
+
 .main{
   display: flex;
   flex-direction: column;
@@ -213,4 +215,22 @@
   display: flex;
   justify-content:center;
   padding: 20px;
+}
+
+.pagination{
+  padding: 20px;
+}
+
+.pagination .pag-wrap{
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .pag-wrap li{
+  margin-right: 5px;
+}
+
+.pagination .pag-wrap li button{
+
+  padding: 10px;
 }

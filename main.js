@@ -17,6 +17,8 @@ circle.style.strokeDashoffset = circumference;
 const bmiResult = document.querySelector('.bmi-result');
 
 const time = new Date();
+const url = new URL(window.location.href);
+
 
 //Step 3: Progress to offset
 
@@ -100,7 +102,6 @@ function bmiCondition(percent) {
     return { result: "標準", colortext: color, className: 'record-stand' };
   }
 
-
   if (percent >= 24 && percent < 27) {
     color = getCssrootColorVarable('--litleheavy');
     return { result: "過重", colortext: color, className: 'record-litleheavy' };
@@ -123,6 +124,8 @@ function bmiCondition(percent) {
 
 const hei = document.querySelector('.height');
 const wei = document.querySelector('.weigth');
+
+
 // const calcBtn = document.querySelector('.calcBtn')
 //setProgress(input.value);
 
@@ -159,7 +162,8 @@ circleText.addEventListener('click', function (e) {
   // if (bmire < 101 && bmire > -1) {
 
   // }  
-})
+});
+
 
 
 function setLocalStorage(parms) {
@@ -184,14 +188,45 @@ function getLocalStorage() {
   return JSON.parse(window.localStorage.getItem("bmi_log"));
 }
 
-function UIdisplay() {
-  let list = getLocalStorage() == undefined ? [] : getLocalStorage();
-  let results = "";
- 
-
-
-
+function paginationLC(list) {
+  //console.log(num);
+  //let list = getLocalStorage() == undefined ? [] : getLocalStorage();
+  let p = []; //分頁製作
+  let c = [];
   list.forEach(l => {
+
+    c.push(l)
+    if (c.length >= 2) {
+      //p.push([...c]);//ES6  ref value
+      p.push(Array.from(c)); //不影響原來的  array
+      c.length = 0;
+    }
+  });
+  console.log("p", p);
+
+  return p;
+}
+
+function UIdisplay(num) {
+ 
+  //方法1
+  //---------------------------------------------------------
+  //const urlParams = new URLSearchParams(window.location.search);
+  //const clickPage = urlParams.get('p');
+  // console.log("urlParams",urlParams);
+  // console.log("clickPage",clickPage);
+  //let p = (clickPage !== null) ? clickPage:num;
+  //---------------------------------------------------------
+    //方法2
+  //---------------------------------------------------------
+
+  //---------------------------------------------------------  
+  let list = getLocalStorage() == undefined ? [] : getLocalStorage();
+  let pag = paginationLC(list);
+  let results = "";
+
+
+  pag[num-1].forEach(l => {
     results += `
 <li class="record ${l.className}">
   <span class="record-title">${l.head}</span>
@@ -204,27 +239,81 @@ function UIdisplay() {
   });
 
   record_container.innerHTML = results;
-
+  UIpagination(pag.length);
 }
 
 
-//init 初始化
+
+
+function UIpagination(pag_len) {
+  const pag_wrap = document.querySelector('.pag-wrap')
+  let results = "";
+
+  for (let i = 0; i < pag_len; i++) {
+    results += `
+    <li>
+      <button class="pag-click" data-id=${i + 1} >${i + 1}</button>
+    </li>
+    `
+  }
+  //方法1
+  //---------------------------------------------------------
+  //<li>
+  //<a href="http://${url.host}${url.pathname}?p=${i+1}" class="pag-click" data-id=${i + 1} >${i + 1}</a>
+  //</li>
+  //---------------------------------------------------------
+  pag_wrap.innerHTML = results;
+
+  // const pag_click = [...document.querySelectorAll('.pag-click')];
+  // console.log(pag_click);
+
+  //必須等 pag_wrap.innerHTML = results; 才能執行
+  const pag_click = [...document.querySelectorAll('.pag-click')];
+  console.log(pag_click);
+  
+  pag_click.forEach(btn => {
+    btn.addEventListener("click", e => {
+      //paginationLC(e.target.innerText);
+      e.preventDefault();
+      UIdisplay(e.target.innerText);
+     // console.log(e.target.innerText);
+      //console.log(1)      
+    })
+  });
+}
+
+/**
+ * 監聽 每顆按鈕 點選分頁
+ */
+// function pagClick(pag_click) {
+//   console.log("pag_click",pag_click);
+//   //沒法讀取到 pag_click pag_click =[] 空的
+//   pag_click.forEach(btn => {
+//     btn.addEventListener("click", e => {
+//       //paginationLC(e.target.innerText);
+//       //e.preventDefault();
+//       UIdisplay(e.target.innerHtml);
+//       console.log(e.target.innerHtml);
+//     })
+//   });
+//   //console.log(pag_click);
+// }
+
+
+// document.addEventListener("DOMContentLoaded", (e) => {
+  
+ 
+//   //pagClick();
+// })
+
+
+/** init 初始化
+ * 
+ *  */ 
 (function () {
-  UIdisplay();
+  UIdisplay(1);
+
 })();
 
 
 
-// let p = []; //分頁製作
-// let c =[]
-// list.forEach(l =>{  
-//   c.push(l)
-//     if (c.length >=2) {
-//      //p.push([...c]);//ES6  ref value
-//      p.push(Array.from(c)); //不影響原來的  array
-//      c.length = 0; 
-//     }
-   
-//   //
-// });
-// console.log("p",p);
