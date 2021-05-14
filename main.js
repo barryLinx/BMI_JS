@@ -146,22 +146,9 @@ circleText.addEventListener('click', function (e) {
     return;
   }
 
-  // if (rules_zero.test(hei.value) || rules_zero.test(wei.value) ) {    //
-  //   console.log(rules_zero.test(hei.value));
-  //   alert("身高、體重，請勿只輸入 1");
-  //   return;
-  // }
-  // if (bmire < 0) { bmire = 0; }
-  // if (bmire > 100) { 
-  //   bmire = 100; 
-  //   circle.style.stroke = "green"
-  // }
-  //setProgress(bmi())//函數傳函數
-  setProgress(bmire);
-  //UIdisplay()
-  // if (bmire < 101 && bmire > -1) {
 
-  // }  
+  setProgress(bmire);
+
 });
 
 
@@ -191,24 +178,35 @@ function getLocalStorage() {
 function paginationLC(list) {
   //console.log(num);
   //let list = getLocalStorage() == undefined ? [] : getLocalStorage();
-  let p = []; //分頁製作
-  let c = [];
-  list.forEach(l => {
+  let pag_total = []; //分頁共幾頁
+  let c = []; // 暫存
+  let pag_count = 2;
+  
+  if (list.length == 1) {
+    pag_total.push(list) // 無法直接 return p.return (list)
+    return pag_total;
+  }
 
+  list.forEach(l => {
     c.push(l)
-    if (c.length >= 2) {
+    if (c.length % pag_count == 0) {
       //p.push([...c]);//ES6  ref value
-      p.push(Array.from(c)); //不影響原來的  array
+      pag_total.push(Array.from(c)); //不影響原來的  array
       c.length = 0;
     }
-  });
-  console.log("p", p);
 
-  return p;
+  });
+
+  if (c.length % pag_count !== 0) {
+    pag_total.push(Array.from(c));
+  }
+  //console.log("pag_total", pag_total);
+
+  return pag_total;
 }
 
-function UIdisplay(num) {
- 
+function UIdisplay(params) {
+ let page = params || 1;
   //方法1
   //---------------------------------------------------------
   //const urlParams = new URLSearchParams(window.location.search);
@@ -222,11 +220,17 @@ function UIdisplay(num) {
 
   //---------------------------------------------------------  
   let list = getLocalStorage() == undefined ? [] : getLocalStorage();
+  console.log("list",list);
   let pag = paginationLC(list);
   let results = "";
 
+  if (list.length == 0) {
+    return;
+  }
 
-  pag[num-1].forEach(l => {
+  console.log(pag[page-1]);
+
+  pag[page-1].forEach(l => {
     results += `
 <li class="record ${l.className}">
   <span class="record-title">${l.head}</span>
@@ -248,7 +252,9 @@ function UIdisplay(num) {
 function UIpagination(pag_len) {
   const pag_wrap = document.querySelector('.pag-wrap')
   let results = "";
-
+  if (pag_len <= 1) {
+    return;
+  }
   for (let i = 0; i < pag_len; i++) {
     results += `
     <li>
@@ -299,21 +305,23 @@ function UIpagination(pag_len) {
 //   //console.log(pag_click);
 // }
 
-
-// document.addEventListener("DOMContentLoaded", (e) => {
+/** init 初始化
+ * 
+ *  */ 
+document.addEventListener("DOMContentLoaded", (e) => {
   
- 
-//   //pagClick();
-// })
+  UIdisplay(1);
+  //pagClick();
+})
 
 
 /** init 初始化
  * 
  *  */ 
-(function () {
-  UIdisplay(1);
+// (function () {
+//   UIdisplay(1);
 
-})();
+// })();
 
 
 
