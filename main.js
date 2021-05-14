@@ -18,6 +18,7 @@ const bmiResult = document.querySelector('.bmi-result');
 
 const time = new Date();
 const url = new URL(window.location.href);
+const pag_count = 8;
 
 
 //Step 3: Progress to offset
@@ -180,7 +181,7 @@ function paginationLC(list) {
   //let list = getLocalStorage() == undefined ? [] : getLocalStorage();
   let pag_total = []; //分頁共幾頁
   let c = []; // 暫存
-  let pag_count = 2;
+  
   
   if (list.length == 1) {
     pag_total.push(list) // 無法直接 return p.return (list)
@@ -270,9 +271,6 @@ function UIpagination(pag_len) {
   //---------------------------------------------------------
   pag_wrap.innerHTML = results;
 
-  // const pag_click = [...document.querySelectorAll('.pag-click')];
-  // console.log(pag_click);
-
   //必須等 pag_wrap.innerHTML = results; 才能執行
   const pag_click = [...document.querySelectorAll('.pag-click')];
   console.log(pag_click);
@@ -308,8 +306,7 @@ function UIpagination(pag_len) {
 /** init 初始化
  * 
  *  */ 
-document.addEventListener("DOMContentLoaded", (e) => {
-  
+document.addEventListener("DOMContentLoaded", (e) => {  
   UIdisplay(1);
   //pagClick();
 })
