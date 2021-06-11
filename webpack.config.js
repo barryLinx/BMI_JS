@@ -18,9 +18,9 @@ module.exports = {
   // },
   plugins: [
     new MiniCssExtractPlugin(
-      //   {
-      //    filename:'[name].css'
-      //  }
+        {
+         filename:'[name].css'
+       }
     ),
     new HtmlWebpackPlugin({
       title: 'BMI_js',
