@@ -1,5 +1,12 @@
 //https://css-tricks.com/building-progress-ring-quickly/
 //https://codepen.io/JMChristensen/pen/Ablch
+import './css/reset.css';
+import './css/style.css';
+
+import './image/BMICLogo.png';
+import './image/BMICLogo_footer.png';
+
+
 
 const circle = document.querySelector('.progress-ring__circle');
 const circleText = document.querySelector('.circle-center-text');

@@ -1,0 +1,285 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*{
+  box-sizing: border-box;
+}
+:root{
+  --stand:#59b300;
+  --light:#00a9ff;
+  --litleheavy:#FF982D ;
+  --lightheavy:#ff6600 ;
+  --midheavy:#FF6C03 ;
+  --tooheavy:#f4276f;
+  --bg-nav:#424242;
+  --primary:#FFD366;
+}
+
+/* nav */
+
+.nav{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding:30px;
+  background-color:var(--bg-nav);
+}
+
+.nav img{
+  margin-right: 100px;
+}
+
+.nav-from{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin-right: 50px;
+}
+
+.nav-from input{
+  border:3px solid var(--primary);
+  border-radius: 10px;
+  width: 180px;
+  height: 28px;
+  margin-bottom: 25px;
+  background-color:transparent;
+  color: aliceblue;
+  outline: none;
+}
+
+.nav-from label{
+  color:var(--primary);
+}
+
+.nav .calcBtn{
+  border-radius: 100%;
+  background-color: #FFD366;
+  color: black;
+  height: 120px;
+  width: 120px;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+ .bmi-result{
+  margin-left: 30px;
+  font-size: 40px;
+  
+}
+
+
+.progress-ring__circle {
+  /* stroke-dasharray: 10 2; */
+  transition: 0.7s stroke-dashoffset;
+  /* axis compensation */
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke:var(--primary);
+  stroke-width:5;
+  fill:transparent;
+}
+
+.circle-ircle{
+  fill:transparent;
+  stroke:gray;
+  stroke-width:5;
+  /* fill:yellow; */
+ 
+}
+
+.circle-center-text{  
+  stroke-width:2px;
+  font-size: 28px;
+  fill: var(--primary); 
+  cursor: pointer;
+}
+
+.circle-center-text:hover{
+  font-size: 32px;
+}
+
+
+.circle-bmitag{
+  fill: transparent;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;  
+  background-color: rgba(129, 128, 128, 0.384);
+  height:100vh;
+}
+
+.main .record{
+  background-color: #fff;
+  padding: 20px 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.main .record::before{
+  position: absolute;
+  content: ''; 
+  width: 0px;
+	height: 88%;
+  left: 0px;
+  top: 0px;
+}
+
+.main ul{
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+.main h2{
+  font-size:38px;
+  margin-top: 15px;
+}
+.main .record .record-title{
+  font-size: 24px;
+  padding-left: 0px;
+  width: 120px;
+}
+
+.main .record .record-content {
+  font-size: 24px;
+}
+.main .record .record-time {
+  font-size: 14px;
+  padding-left: 24px;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+
+
+.main .record .record-content small{
+  
+  font-size: 14px;
+  padding-left: 20px;
+  
+}
+
+.main .record-stand::before{ 
+  background-color: var(--stand); 
+  border: 4px solid var(--stand);  
+} 
+
+.main .record-light::before {
+ 
+  background-color: var(--light);
+ 
+  border: 4px solid var(--light);
+  
+}
+
+.main .record-litleheavy::before {
+ 
+  background-color: var(--litleheavy);
+ 
+  border: 4px solid var(--litleheavy);
+  
+}
+
+.main .record-lightheavy::before {
+ 
+  background-color: var(--lightheavy);
+ 
+  border: 4px solid var(--lightheavy);
+  
+}
+
+.main .record-midheavy::before {
+ 
+  background-color: var(--lightheavy);
+ 
+  border: 4px solid var(--lightheavy);
+ 
+}
+
+.main .record-tooheavy::before {
+
+  background-color: var(--tooheavy);
+ 
+  border: 4px solid var(--tooheavy);
+  
+}
+
+.footer{
+  background-color: var(--primary);
+  display: flex;
+  justify-content:center;
+  padding: 20px;
+}
+
+.pagination{
+  padding: 20px;
+}
+
+.pagination .pag-wrap{
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .pag-wrap li{
+  margin-right: 5px;
+}
+
+.pagination .pag-wrap li button{
+
+  padding: 10px;
+}
+
+/*# sourceMappingURL=app.css.map*/
