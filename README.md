@@ -4,5 +4,4 @@
 
 ## Tool
 
-- Bootstrap - v5
 - webpack - v5
