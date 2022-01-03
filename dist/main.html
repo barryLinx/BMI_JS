@@ -1,1 +1,92 @@
-<!doctype html><html lang="en"><head><title>BMI_js</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script defer="defer" src="js/app.3647bee5.js"></script><link href="app.css" rel="stylesheet"></head><body><div class="nav"><img src="image/BMICLogo.png"><div class="nav-from"><label for="">身高 cm</label> <input class="height" value="0" type="number" placeholder="身高"> <label for="">體重 kg</label> <input class="weigth" value="0" type="number" placeholder=""></div><svg class="progress-ring" height="120" width="120"><circle class="circle-ircle" r="55" cx="60" cy="60"/><circle class="progress-ring__circle" r="55" cx="60" cy="60"/><text class="circle-center-text" x="60" y="60" text-anchor="middle" alignment-baseline="middle">看結果</text><text class="circle-bmitag" x="46" y="90">BMI</text></svg> <span class="bmi-result"></span></div><div class="main"><h2>BMI紀錄</h2><ul class="record-container"></ul><div class="pagination"><ul class="pag-wrap"></ul></div></div><div class="footer"><img src="image/BMICLogo_footer.png" alt=""></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BMI_js</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link href="css/reset.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet"> -->
+<script defer src="js/app.1b1af209.js"></script><link href="app.css" rel="stylesheet"></head>
+
+<body>
+
+  <div class="nav">
+    <img src="image/BMICLogo.png">
+    <div class="nav-from">
+      <label for="">身高 cm</label>
+      <input class="height" value="0" type="number" placeholder="身高">
+      <label for="">體重 kg</label>
+      <input class="weigth" value="0" type="number" placeholder="">
+    </div>
+
+
+    <!-- <button class="calcBtn">
+      送出
+    </button> -->
+
+    <svg class="progress-ring" height="120" width="120">
+      <circle class="circle-ircle" r="55" cx="60" cy="60" />
+      <circle class="progress-ring__circle" r="55" cx="60" cy="60" />
+      <text class="circle-center-text" x="60" y="60" text-anchor="middle" alignment-baseline="middle">看結果</text>
+      <text class="circle-bmitag" x="46" y="90">BMI</text>
+    </svg>
+    <span class="bmi-result"></span>
+  </div>
+
+  <div class="main">
+    <!-- <table>
+      <tr>
+        <td>理想</td>
+        <td>過輕</td>
+        <td>過重</td>
+        <td>輕度肥胖</td>
+        <td>中度肥胖</td>
+        <td>重度肥胖</td>
+      </tr>
+      <tr>        
+        <td>18.5≦BMI＜24</td>
+        <td>BMI ＜ 18.5</td>
+        <td>24≦BMI＜27</td>
+        <td>27≦BMI＜30</td>
+        <td>30≦BMI＜35</td>
+        <td>BMI≧35</td>
+      </tr>
+      
+    </table> -->
+    <h2>BMI紀錄</h2>
+    <ul class="record-container">
+      <!-- 
+      <li class="record">
+        <span class="record-title record-tooheavy" >重度肥胖</span>
+        <span class="record-content"> <small>BMI</small> 11.94</span>
+        <span class="record-content"> <small>weight</small> 50kg</span>
+        <span class="record-content"> <small>height</small> 180cm</span>
+        <span class="record-time">09-06-2012 </span>
+      </li> -->
+
+    </ul>
+    <div class="pagination">
+    <ul id="pagination" class="pag-wrap">
+      <!-- <li>
+        <a href="" class="pag-click" data-id=${i + 1} >${i + 1}</a>
+      </li> -->
+    </ul>
+  </div>
+  </div>
+  <!-- <div class="pagination">
+    <ul class="pag-wrap">
+    
+    </ul>
+  </div> -->
+
+  <div class="footer">
+    <img src="image/BMICLogo_footer.png" alt="">
+  </div>
+
+
+
+  <!-- <script src="main.js"></script> -->
+</body>
+
+</html>

@@ -279,18 +279,26 @@ function UIpagination(pag_len) {
   pag_wrap.innerHTML = results;
 
   //必須等 pag_wrap.innerHTML = results; 才能執行
-  const pag_click = [...document.querySelectorAll('.pag-click')];
-  console.log(pag_click);
   
-  pag_click.forEach(btn => {
-    btn.addEventListener("click", e => {
-      //paginationLC(e.target.innerText);
-      e.preventDefault();
-      UIdisplay(e.target.innerText);
-     // console.log(e.target.innerText);
-      //console.log(1)      
-    })
-  });
+  //console.log(pag_click);
+  
+  const paginationEle =document.getElementById('pagination');
+  paginationEle.addEventListener("click",(e)=>{
+    //const {id} = e.target.dataset;
+    e.preventDefault();
+    UIdisplay(e.target.innerText);
+    // console.log(e.target)
+    // console.log(id)
+    // console.log("#pagination",e.target.currentTarget)
+  })
+  //const pag_click = [...document.querySelectorAll('.pag-click')];
+  // pag_click.forEach(btn => {
+  //   btn.addEventListener("click", e => {
+  //     e.preventDefault();
+  //     UIdisplay(e.target.innerText);
+  //    // console.log(e.target.innerText);
+  //   })
+  // });
 }
 
 /**
